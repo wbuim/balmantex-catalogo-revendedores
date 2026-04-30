@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
+app.disable('x-powered-by');
 const port = 3002;
 
 const allowedOrigins = [
@@ -42,6 +43,31 @@ app.use(express.static(PUBLIC_DIR, {
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
     dotfiles: 'deny'
 }));
+
+// Bloqueia explicitamente tentativas de acesso a arquivos sensíveis
+app.use((req, res, next) => {
+    const url = decodeURIComponent(req.path || '').toLowerCase();
+
+    const bloqueados = [
+        '.env',
+        'server.js',
+        'package.json',
+        'package-lock.json',
+        'balmantex.db',
+        '.git',
+        'contexto',
+        'backup',
+        'backups',
+        'private'
+    ];
+
+    if (bloqueados.some(item => url.includes(item))) {
+        return res.status(404).send('Arquivo não encontrado.');
+    }
+
+    next();
+});
+
 
 // =======================================================
 // INICIALIZAÇÃO DO BANCO DE DADOS (SQLite)

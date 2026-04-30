@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balmantex - Indústria Textil e Crochê</title>
+    <link rel="icon" type="image/png" href="balmantex-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="header-logo">
+                <span class="sr-only">Balmantex</span>
+            </div>
+            <nav>
+                <a href="#inicio" class="active">Início</a>
+                <a href="#sobre">Quem Somos</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#revendedores">Seja Revendedor</a>
+                <a href="#" id="cart-icon" style="font-size: 1.2rem;">🛒 <span id="cart-count" class="cart-badge">0</span></a>
+                <a href="login-cliente.html" id="link-login-menu" style="font-weight: 600; color: var(--primary-color);">Entrar / Cadastrar</a>
+                <a href="admin.html" class="btn-admin-link">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Crochê direto da fábrica para todo o Brasil</h2>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn-primary">Ver Produtos</a>
+                <a href="#revendedores" class="btn-secondary">Seja Revendedor</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quem Somos</h2>
+                <div class="divider"></div>
+            </div>
+            <p class="sobre-texto">
+                Fábrica localizada em Barbosa Ferraz com produção própria de peças em crochê, atendendo clientes de diversas regiões do Brasil. Levamos qualidade, tradição e exclusividade em cada ponto.
+            </p>
+        </div>
+    </section>
+
+    <section id="produtos" class="produtos-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Produtos</h2>
+                <div class="divider"></div>
+                <p>Escolha a categoria e encante-se com nossas peças.</p>
+            </div>
+            
+            <div class="filtros-categoria">
+                <button class="btn-filtro active" data-cat="todos">Todos</button>
+                <button class="btn-filtro" data-cat="banheiro">Linha Banheiro</button>
+                <button class="btn-filtro" data-cat="cozinha">Linha Cozinha</button>
+                <button class="btn-filtro" data-cat="decoracao">Linha Decoração</button>
+                <button class="btn-filtro" data-cat="personalizada">Peças Personalizadas</button>
+            </div>
+
+            <div id="vitrine" class="grid-container">
+                </div>
+        </div>
+    </section>
+
+    <section id="revendedores" class="revendedores">
+        <div class="container">
+            <div class="revendedor-box">
+                <div class="revendedor-texto">
+                    <h2>Seja um parceiro revendedor</h2>
+                    <p>Aumente sua renda vendendo produtos direto da fábrica com alta margem de lucro. Preencha os dados e entraremos em contato!</p>
+                </div>
+                <form id="form-revendedor" class="form-contato">
+                    <input type="text" id="rev-nome" placeholder="Seu Nome Completo" required>
+                    <input type="text" id="rev-cidade" placeholder="Sua Cidade e Estado" required>
+                    <input type="tel" id="rev-telefone" placeholder="Seu Telefone / WhatsApp" required>
+                    <button type="submit" class="btn-primary" style="box-shadow: none;">Quero ser Revendedor</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="confianca" class="confianca">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Estrutura e Entregas</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&q=80&w=400" alt="Nossa Produção">
+                    <p>Produção Própria</p>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1560209617-059c0b2daaf5?auto=format&fit=crop&q=80&w=400" alt="Clientes Satisfeitos">
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1580674684081-7767331afc52?auto=format&fit=crop&q=80&w=400" alt="Entregas">
+                    <p>Entregas para todo Brasil</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="localizacao">
+        <div class="footer-content container">
+            <div class="footer-info">
+                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="footer-logo">
+                <span class="sr-only">Balmantex</span>
+                <p>📍 RUA 26 DE AGOSTO 147, Barbosa Ferraz, Paraná, Brasil</p>
+                <a href="https://wa.me/5544999345231" target="_blank" class="footer-zap">
+                    📱 WhatsApp: (44) 99934-5231
+                </a>
+            </div>
+            <p class="copyright">&copy; 2026 Balmantex Indústria Textil. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5544999345231" target="_blank" class="whatsapp-flutuante" aria-label="Pedido Rápido WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone WhatsApp">
+    </a>
+
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button id="close-cart" class="close-cart">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            </div>
+        <div class="cart-footer">
+            
+            <div class="cart-total" style="font-size: 1rem; color: #7A7A7A; margin-bottom: 10px;">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-price">R$ 0,00</span>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="cep-frete" placeholder="Digite o CEP" style="flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #ddd; font-family: 'Poppins', sans-serif;">
+                    <button id="btn-calcular-frete" style="background: var(--primary-color); color: white; border: none; padding: 0 15px; border-radius: 6px; cursor: pointer; font-weight: 600;">Calcular</button>
+                </div>
+                <p id="msg-frete" style="font-size: 0.85rem; color: var(--primary-color); margin-top: 8px; font-weight: 600;"></p>
+            </div>
+            <div class="cart-total">
+                <span>Total Final:</span>
+                <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <button id="btn-iniciar-pagamento" class="btn-primary" style="width: 100%; text-align: center; box-shadow: none;">Ir para Pagamento</button>
+            <div id="paymentBrick_container" style="margin-top: 15px; display: none;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

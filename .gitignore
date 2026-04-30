@@ -1,0 +1,14 @@
+node_modules/
+.env
+uploads/
+*.db
+*.sqlite
+*.sqlite3
+backups/
+private/
+contexto*.txt
+contexto.txt
+gerar_contexto_balman.sh
+aplicar_correcoes_imediatas_balman.sh
+*.bkp
+.DS_Store

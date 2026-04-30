@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Balmantex</title>
+    <link rel="icon" type="image/png" href="balmantex-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos extras para as Abas do Admin */
+        .admin-tabs {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 3rem; flex-wrap: wrap;
+        }
+        .admin-tab-btn {
+            background-color: white; border: 2px solid #ddd; color: var(--text-dark);
+            padding: 10px 25px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s;
+        }
+        .admin-tab-btn.active {
+            background-color: var(--primary-color); border-color: var(--primary-color); color: white;
+            box-shadow: 0 4px 10px rgba(217,119,87,0.3);
+        }
+        .admin-tab-content { display: none; animation: fadeIn 0.4s; }
+        .admin-tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="header-logo">
+                <span class="sr-only">Balmantex</span>
+            </div>
+            <nav>
+                <a href="index.html">Voltar para a Vitrine</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+        <section id="login-section">
+            <div class="section-title">
+                <h2>Acesso Restrito</h2>
+                <p>Use suas credenciais administrativas para acessar o painel de gestão.</p>
+            </div>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Usuário administrativo" required>
+                <input type="password" id="password" placeholder="Senha administrativa" required>
+                <button type="submit" class="btn-primary">Entrar no Painel</button>
+                <p id="login-error" style="color: #e74c3c; display: none; text-align: center; margin-top: 10px;">Credenciais inválidas.</p>
+            </form>
+        </section>
+
+        <section id="admin-section" style="display: none;">
+            
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" onclick="mudarAbaAdmin('produtos')">📦 Produtos</button>
+                <button class="admin-tab-btn" onclick="mudarAbaAdmin('pedidos')">🛒 Pedidos Realizados</button>
+                <button class="admin-tab-btn" onclick="mudarAbaAdmin('clientes')">👥 Base de Clientes</button>
+            </div>
+
+            <div id="tab-produtos" class="admin-tab-content active">
+                <div class="section-title">
+                    <h2 id="form-titulo">Adicionar Novo Produto</h2>
+                    <p id="form-subtitulo">Preencha os detalhes para cadastrar a peça na vitrine.</p>
+                </div>
+                
+                <form id="add-product-form" data-edit-id="">
+                    <input type="text" id="prod-name" placeholder="Nome da Peça (ex: Jogo de Banheiro)" required>
+                    <select id="prod-category" required>
+                        <option value="" disabled selected>Selecione a Categoria</option>
+                        <option value="banheiro">Linha Banheiro</option>
+                        <option value="cozinha">Linha Cozinha</option>
+                        <option value="decoracao">Linha Decoração</option>
+                        <option value="personalizada">Peças Personalizadas</option>
+                    </select>
+                    <input type="text" id="prod-size" placeholder="Tamanho (ex: 70cm x 50cm)" required>
+                    <input type="number" id="prod-price" placeholder="Valor Promocional ou Final (R$)" step="0.01" required>
+                    <input type="number" id="prod-estoque" placeholder="Quantidade em Stock" min="0" required>
+                    <textarea id="prod-desc" placeholder="Descrição dos detalhes..." required></textarea>
+                    
+                    <label style="font-size: 0.9rem; color: #7A7A7A; margin-bottom: -10px;">Foto do Produto (Deixe em branco para manter a atual na edição):</label>
+                    <input type="file" id="prod-image" accept="image/*">
+                    
+                    <div style="display: flex; gap: 10px; width: 100%;">
+                        <button type="submit" id="btn-salvar" class="btn-primary" style="flex: 1;">Salvar Produto</button>
+                        <button type="button" id="btn-cancelar" class="btn-secondary" style="display: none; flex: 1; border-color: #7A7A7A; color: #7A7A7A;">Cancelar Edição</button>
+                    </div>
+                </form>
+
+                <hr class="divider" style="margin: 4rem auto; width: 100px; background-color: #EAEAEA;">
+
+                <div class="section-title">
+                    <h2>Vitrine Atual</h2>
+                    <p>Gerencie os produtos e promoções que estão no ar.</p>
+                </div>
+                
+                <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                        <thead>
+                            <tr style="background-color: var(--primary-color); color: white;">
+                                <th style="padding: 15px; border-top-left-radius: 12px;">Imagem</th>
+                                <th style="padding: 15px;">Detalhes do Produto</th>
+                                <th style="padding: 15px;">Valor</th>
+                                <th style="padding: 15px; border-top-right-radius: 12px;">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-pedidos" class="admin-tab-content">
+                <div class="section-title">
+                    <h2>Histórico de Pedidos</h2>
+                    <p>Acompanhe o status de pagamento das vendas realizadas.</p>
+                </div>
+                <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 700px;">
+                        <thead>
+                            <tr style="background-color: var(--primary-color); color: white;">
+                                <th style="padding: 15px; border-top-left-radius: 12px;">Nº Pedido</th>
+                                <th style="padding: 15px;">Cliente / WhatsApp</th>
+                                <th style="padding: 15px;">Data</th>
+                                <th style="padding: 15px;">Valor Total</th>
+                                <th style="padding: 15px; border-top-right-radius: 12px;">Status Mercado Pago</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-pedidos-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-clientes" class="admin-tab-content">
+                <div class="section-title">
+                    <h2>Base de Clientes</h2>
+                    <p>Contatos e localizações dos seus compradores.</p>
+                </div>
+                <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 700px;">
+                        <thead>
+                            <tr style="background-color: var(--primary-color); color: white;">
+                                <th style="padding: 15px; border-top-left-radius: 12px;">ID</th>
+                                <th style="padding: 15px;">Nome do Cliente</th>
+                                <th style="padding: 15px;">Contato (E-mail / Tel)</th>
+                                <th style="padding: 15px; border-top-right-radius: 12px;">Localização</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-clientes-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button id="logout-btn" style="background: #e74c3c; width: auto; padding: 10px 30px; color: white; border-radius: 30px; border:none; cursor:pointer; font-weight:600;">Sair do Sistema</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Lógica simples para trocar as abas do admin sem sair da página
+        function mudarAbaAdmin(aba) {
+            // Esconde todas
+            document.querySelectorAll('.admin-tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-btn').forEach(el => el.classList.remove('active'));
+            
+            // Mostra a selecionada
+            document.getElementById('tab-' + aba).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Força a recarga dos dados se clicar nas abas novas (as funções vieram do script.js)
+            if(aba === 'pedidos' && typeof carregarPedidosAdmin === 'function') carregarPedidosAdmin();
+            if(aba === 'clientes' && typeof carregarClientesAdmin === 'function') carregarClientesAdmin();
+        }
+    </script>
+</body>
+</html>

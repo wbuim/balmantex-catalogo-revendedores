@@ -1,0 +1,822 @@
+/* =========================================
+   ESTILO VISUAL REFINADO BALMANTEX
+   (Fábrica Moderna / Artesanal B2B)
+   ========================================= */
+
+/* =========================================
+   VARIÁVEIS DE CORES E DEFINIÇÕES GERAIS
+   ========================================= */
+:root {
+    --primary-color: #D97757; /* Terracota / Barro / Confiável */
+    --primary-dark: #C06446;
+    --text-dark: #2C2C2C;
+    --text-light: #5A5A5A; /* Um pouco mais escuro para melhor contraste */
+    --bg-color: #FBF9F6; /* Off-white linho muito suave */
+    --card-bg: #FFFFFF;
+    --whatsapp-green: #25D366;
+    --whatsapp-dark: #1EBE57;
+    --section-alt-bg: #F5F1EE; /* Tom de barro claríssimo para alternate */
+}
+
+/* Definição de transições globais para suavidade */
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0 auto 1.5rem auto;
+    border-radius: 2px;
+}
+
+/* =========================================
+   CABEÇALHO (HEADER) E NAVEGAÇÃO REFINADOS
+   ========================================= */
+header {
+    background-color: #FFFFFF;
+    color: var(--text-dark);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Sombra mais difusa */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem; /* Reduzido para mais limpeza */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Correção visual para a logo atual (truque CSS) */
+.header-logo {
+    width: 110px; /* Reduzido um pouco */
+    height: 110px; 
+    object-fit: cover; 
+    object-position: center; 
+    border-radius: 50%;
+    /* Adicionada borda suave para disfarçar o recorte duro */
+    border: 2px solid #EAEAEA; 
+    background-color: #fff;
+    padding: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+header nav a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.95rem;
+    position: relative; /* Para o efeito de underline */
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Efeito de underline moderno no hover */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+header nav a:hover::after, header nav a.active::after {
+    width: 100%;
+}
+
+header nav a.active {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.btn-admin-link {
+    background-color: var(--section-alt-bg);
+    padding: 8px 18px;
+    border-radius: 20px;
+    color: var(--text-dark) !important;
+}
+.btn-admin-link::after { display: none !important; } /* Remove underline do botão admin */
+
+/* =========================================
+   1. BANNER PRINCIPAL (HERO) IMPOSTANTE
+   ========================================= */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('fundo-hero.jpg') center/cover;
+    height: 55vh; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero h2 {
+    font-size: 3rem; /* Maior e mais forte */
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -1px; /* Toque moderno */
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 16px 38px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(217,119,87,0.4);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(217,119,87,0.5);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    padding: 16px 38px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: var(--text-dark);
+}
+
+/* =========================================
+   2. QUEM SOMOS (COM TEXTURA)
+   ========================================= */
+.sobre {
+    background-color: white;
+    padding: 6rem 0;
+    text-align: center;
+    /* Adicionada textura sutil de linho */
+    background-image: url('https://www.transparenttextures.com/patterns/linen.png'); 
+}
+
+.sobre-texto {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* =========================================
+   3. PRODUTOS E FILTROS (REFINADOS)
+   ========================================= */
+.produtos-section {
+    padding: 6rem 0;
+    background-color: var(--bg-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.section-title p {
+    color: var(--text-light);
+    font-weight: 300;
+}
+
+.filtros-categoria {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 4rem;
+}
+
+.btn-filtro {
+    background-color: white;
+    color: var(--text-dark);
+    border: 1px solid #ddd;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-filtro.active, .btn-filtro:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(217,119,87,0.2);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 35px;
+}
+
+/* Cartões de Produto (Refinados e Complexos) */
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    /* Sombra complexa e layered para profundidade */
+    box-shadow: 
+        0 1px 3px rgba(0,0,0,0.02),
+        0 6px 15px rgba(0,0,0,0.03),
+        0 15px 30px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    color: var(--text-dark);
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    font-weight: 300;
+}
+
+.card .price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   4. REVENDEDORES (TEXTURIZADO B2B)
+   ========================================= */
+.revendedores {
+    background-color: var(--primary-color); 
+    padding: 6rem 0;
+    color: white;
+    position: relative;
+    /* Adicionada textura de padrão de malha de crochê sutil */
+    background-image: url('https://www.transparenttextures.com/patterns/knitted-net.png'); 
+}
+
+.revendedor-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.revendedor-texto {
+    flex: 1;
+    min-width: 300px;
+}
+
+.revendedor-texto h2 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.revendedor-texto p {
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.form-contato {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 3.5rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Sombra forte para o formulário */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* =========================================
+   5. CONFIANÇA (SHOWCASE REFINADO)
+   ========================================= */
+.confianca {
+    padding: 6rem 0;
+    background-color: white;
+    text-align: center;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 3rem;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.galeria-item p {
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   FORMULÁRIOS E BOTÕES GERAIS REFINADOS
+   ========================================= */
+button, .btn-whatsapp {
+    padding: 16px 28px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-whatsapp {
+    background-color: var(--whatsapp-green);
+    color: white;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+}
+
+.btn-whatsapp:hover {
+    background-color: var(--whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37,211,102,0.5);
+}
+
+input, textarea, select {
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #EDEDED;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    background-color: #FAFAFA;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 300;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+form[id="add-product-form"], form[id="login-form"] {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin: 0 auto;
+    gap: 15px;
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* =========================================
+   RODAPÉ (FOOTER B2B MODERNO)
+   ========================================= */
+footer {
+    background-color: #1F1F1F; /* Fundo quase preto moderno */
+    color: #F1F1F1;
+    text-align: center;
+    padding: 5rem 2rem;
+    margin-top: 4rem;
+    position: relative;
+    /* Linha decorativa no topo do footer */
+    border-top: 3px solid var(--primary-color);
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    width: 110px; 
+    height: 110px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 2rem auto;
+    border: 2px solid #333; /* Borda escura no footer */
+    background-color: #fff;
+    padding: 2px;
+}
+
+.footer-zap {
+    display: inline-block;
+    color: var(--whatsapp-green); 
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    font-size: 1.15rem;
+}
+
+.footer-zap:hover {
+    color: white;
+}
+
+.footer-info p {
+    margin-bottom: 7px;
+    font-weight: 300;
+}
+
+.copyright {
+    margin-top: 4rem;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* =========================================
+   BOTÃO FLUTUANTE DO WHATSAPP REFINADO
+   ========================================= */
+.whatsapp-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px !important;
+    height: 65px !important;
+    background-color: var(--whatsapp-green);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.whatsapp-flutuante img {
+    width: 38px !important;
+    height: 38px !important;
+    object-fit: contain;
+    margin: 0 !important;
+}
+
+.whatsapp-flutuante:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: var(--whatsapp-dark);
+}
+
+/* =========================================
+   RESPONSIVIDADE AJUSTADA
+   ========================================= */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        padding: 2rem 1rem;
+        gap: 15px;
+    }
+
+    header nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .hero h2 { font-size: 2.2rem; }
+    .revendedor-box { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+    .header-logo { width: 90px; height: 90px; }
+    .grid-container { grid-template-columns: 1fr; gap: 25px; }
+}
+
+/* =========================================
+   CARRINHO DE COMPRAS (SIDEBAR)
+   ========================================= */
+.cart-badge {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.75rem;
+    vertical-align: top;
+    margin-left: 2px;
+    font-weight: 700;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cart-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -450px; /* Escondido fora da tela */
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    background: white;
+    z-index: 2001;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+    transition: right 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active {
+    right: 0; /* Desliza para dentro */
+}
+
+.cart-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid #EAEAEA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-light);
+    padding: 0;
+}
+
+.close-cart:hover { color: var(--primary-color); }
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 20px;
+}
+
+.cart-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #EAEAEA;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.cart-item-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.remove-item {
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+}
+
+.cart-footer {
+    padding: 25px;
+    border-top: 1px solid #EAEAEA;
+    background: white;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+/* =========================================
+   MODAIS CUSTOMIZADOS (SUBSTITUTOS DO ALERT)
+   ========================================= */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.custom-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.custom-modal {
+    background: white;
+    width: 90%;
+    max-width: 420px;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transform: translateY(-20px) scale(0.95);
+    transition: all 0.3s ease;
+}
+.custom-modal-overlay.active .custom-modal {
+    transform: translateY(0) scale(1);
+}
+.custom-modal-header span {
+    display: inline-block;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+.custom-modal-header h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+}
+.custom-modal-body p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+.custom-modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.btn-modal {
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+.btn-modal-confirm {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(217,119,87,0.3);
+}
+.btn-modal-confirm:hover { 
+    background-color: var(--primary-dark); 
+    transform: translateY(-2px);
+}
+.btn-modal-cancel {
+    background-color: #F0F0F0;
+    color: var(--text-dark);
+}
+.btn-modal-cancel:hover { 
+    background-color: #E0E0E0; 
+}

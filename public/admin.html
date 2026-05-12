@@ -6,7 +6,7 @@
     <title>Administração - Balmantex</title>
     <link rel="icon" type="image/png" href="balmantex-logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260505005633">
     <style>
         /* Estilos extras para as Abas do Admin */
         .admin-tabs {
@@ -24,21 +24,55 @@
         .admin-tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="header-logo">
-                <span class="sr-only">Balmantex</span>
-            </div>
-            <nav>
-                <a href="index.html">Voltar para a Vitrine</a>
-            </nav>
-        </div>
-    </header>
 
-    <main class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+    <style id="admin-critical-clean">
+        body.admin-page header {
+            display: none !important;
+        }
+
+        body.admin-page .admin-floating-back {
+            position: fixed;
+            top: 14px;
+            right: 18px;
+            z-index: 9999;
+            background: #ffffff;
+            color: #333333;
+            text-decoration: none;
+            border: 1px solid #e5e5e5;
+            border-radius: 999px;
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        body.admin-page .admin-main {
+            padding-top: 0.5rem !important;
+        }
+
+        body.admin-page .admin-tabs {
+            margin-top: 0.5rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        body.admin-page .section-title {
+            margin-bottom: 1.2rem !important;
+        }
+
+        body.admin-page .section-title h2 {
+            font-size: 1.9rem;
+        }
+
+        body.admin-page form[id="add-product-form"],
+        body.admin-page form[id="login-form"] {
+            padding: 1.8rem;
+        }
+    </style>
+
+</head>
+<body class="admin-page">
+    <a href="index.html" class="admin-floating-back">← Voltar para a Vitrine</a>
+<main class="container admin-main" style="padding-top: 0.5rem; padding-bottom: 4rem;">
         <section id="login-section">
             <div class="section-title">
                 <h2>Acesso Restrito</h2>
@@ -58,10 +92,17 @@
                 <button class="admin-tab-btn active" onclick="mudarAbaAdmin('produtos')">📦 Produtos</button>
                 <button class="admin-tab-btn" onclick="mudarAbaAdmin('pedidos')">🛒 Pedidos Realizados</button>
                 <button class="admin-tab-btn" onclick="mudarAbaAdmin('clientes')">👥 Base de Clientes</button>
+                <button class="admin-tab-btn" onclick="mudarAbaAdmin('relatorios')">📊 Relatórios</button>
             </div>
 
             <div id="tab-produtos" class="admin-tab-content active">
-                <div class="section-title">
+                
+                <div class="estoque-top-actions">
+                    <button type="button" id="btn-novo-produto" class="btn-primary btn-novo-produto">+ Cadastrar novo produto</button>
+                </div>
+
+                <div id="produto-editor-card" class="produto-editor-card produto-editor-hidden">
+<div class="section-title">
                     <h2 id="form-titulo">Adicionar Novo Produto</h2>
                     <p id="form-subtitulo">Preencha os detalhes para cadastrar a peça na vitrine.</p>
                 </div>
@@ -77,7 +118,20 @@
                     </select>
                     <input type="text" id="prod-size" placeholder="Tamanho (ex: 70cm x 50cm)" required>
                     <input type="number" id="prod-price" placeholder="Valor Promocional ou Final (R$)" step="0.01" required>
-                    <input type="number" id="prod-estoque" placeholder="Quantidade em Stock" min="0" required>
+                    <div class="form-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="form-group">
+                            <label>Quantidade em estoque *</label>
+                            <input type="number" id="prod-estoque" placeholder="Ex: 10" min="0" step="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Peso por unidade (kg)</label>
+                            <input type="number" id="prod-peso" placeholder="Ex: 0.350" min="0" step="0.001">
+                        </div>
+                        <div class="form-group">
+                            <label>Volume por unidade (m³)</label>
+                            <input type="number" id="prod-volume" placeholder="Ex: 0.012" min="0" step="0.001">
+                        </div>
+                    </div>
                     <textarea id="prod-desc" placeholder="Descrição dos detalhes..." required></textarea>
                     
                     <label style="font-size: 0.9rem; color: #7A7A7A; margin-bottom: -10px;">Foto do Produto (Deixe em branco para manter a atual na edição):</label>
@@ -88,20 +142,33 @@
                         <button type="button" id="btn-cancelar" class="btn-secondary" style="display: none; flex: 1; border-color: #7A7A7A; color: #7A7A7A;">Cancelar Edição</button>
                     </div>
                 </form>
+                </div>
+
 
                 <hr class="divider" style="margin: 4rem auto; width: 100px; background-color: #EAEAEA;">
 
                 <div class="section-title">
-                    <h2>Vitrine Atual</h2>
-                    <p>Gerencie os produtos e promoções que estão no ar.</p>
+                    <h2>Estoque Completo</h2>
+                    <p>Controle produtos, quantidades, reservas, peso, volume e valores.</p>
+                    <div id="estoque-resumo-admin" class="estoque-resumo-admin"></div>
+
+                    <div class="admin-filtro-box">
+                        <input type="search" id="filtro-estoque-admin" class="admin-filtro-input" placeholder="🔎 Buscar no estoque por produto, categoria, tamanho, ID, valor...">
+                        <span id="contador-estoque-admin" class="admin-filtro-contador"></span>
+                    </div>
                 </div>
                 
                 <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 1050px;">
                         <thead>
                             <tr style="background-color: var(--primary-color); color: white;">
                                 <th style="padding: 15px; border-top-left-radius: 12px;">Imagem</th>
-                                <th style="padding: 15px;">Detalhes do Produto</th>
+                                <th style="padding: 15px;">Produto</th>
+                                <th style="padding: 15px;">Categoria / Tamanho</th>
+                                <th style="padding: 15px;">Estoque</th>
+                                <th style="padding: 15px;">Reservado</th>
+                                <th style="padding: 15px;">Disponível</th>
+                                <th style="padding: 15px;">Peso / Volume</th>
                                 <th style="padding: 15px;">Valor</th>
                                 <th style="padding: 15px; border-top-right-radius: 12px;">Ações</th>
                             </tr>
@@ -116,15 +183,22 @@
                     <h2>Histórico de Pedidos</h2>
                     <p>Acompanhe o status de pagamento das vendas realizadas.</p>
                 </div>
+
+                <div class="admin-filtro-box">
+                    <input type="search" id="filtro-pedidos-admin" class="admin-filtro-input" placeholder="🔎 Buscar por cliente, telefone, pedido, item, status ou valor...">
+                    <span id="contador-pedidos-admin" class="admin-filtro-contador"></span>
+                </div>
+
                 <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
                     <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 700px;">
                         <thead>
                             <tr style="background-color: var(--primary-color); color: white;">
                                 <th style="padding: 15px; border-top-left-radius: 12px;">Nº Pedido</th>
                                 <th style="padding: 15px;">Cliente / WhatsApp</th>
+                                <th style="padding: 15px;">Itens</th>
                                 <th style="padding: 15px;">Data</th>
                                 <th style="padding: 15px;">Valor Total</th>
-                                <th style="padding: 15px; border-top-right-radius: 12px;">Status Mercado Pago</th>
+                                <th style="padding: 15px; border-top-right-radius: 12px;">Status / Atendimento</th>
                             </tr>
                         </thead>
                         <tbody id="admin-pedidos-body"></tbody>
@@ -137,6 +211,12 @@
                     <h2>Base de Clientes</h2>
                     <p>Contatos e localizações dos seus compradores.</p>
                 </div>
+
+                <div class="admin-filtro-box">
+                    <input type="search" id="filtro-clientes-admin" class="admin-filtro-input" placeholder="🔎 Buscar por nome, e-mail, telefone, cidade ou estado...">
+                    <span id="contador-clientes-admin" class="admin-filtro-contador"></span>
+                </div>
+
                 <div style="overflow-x: auto; background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
                     <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 700px;">
                         <thead>
@@ -152,13 +232,86 @@
                 </div>
             </div>
 
+
+            <div id="tab-relatorios" class="admin-tab-content">
+                <div class="section-title">
+                    <h2>Relatórios Gerenciais</h2>
+                    <p>Veja produtos mais vendidos, clientes que mais compram e itens parados no estoque.</p>
+                </div>
+
+                <div class="relatorios-actions">
+                    <button type="button" class="btn-primary" id="btn-atualizar-relatorios">Atualizar Relatórios</button>
+                </div>
+
+                <div id="relatorios-resumo" class="relatorios-resumo"></div>
+
+                <div class="relatorio-bloco">
+                    <h3>🏆 Produtos mais vendidos</h3>
+                    <p class="relatorio-subtitle">Ranking por quantidade vendida nos pedidos registrados.</p>
+                    <div class="relatorio-table-wrap">
+                        <table class="relatorio-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Categoria / Tamanho</th>
+                                    <th>Qtd. vendida</th>
+                                    <th>Receita estimada</th>
+                                    <th>Última venda</th>
+                                </tr>
+                            </thead>
+                            <tbody id="relatorio-produtos-vendidos-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="relatorio-bloco">
+                    <h3>👥 Clientes que mais compram</h3>
+                    <p class="relatorio-subtitle">Ranking por valor total em pedidos registrados.</p>
+                    <div class="relatorio-table-wrap">
+                        <table class="relatorio-table">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Contato</th>
+                                    <th>Pedidos</th>
+                                    <th>Unidades</th>
+                                    <th>Total comprado</th>
+                                    <th>Última compra</th>
+                                </tr>
+                            </thead>
+                            <tbody id="relatorio-clientes-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="relatorio-bloco">
+                    <h3>📦 Produtos parados no estoque</h3>
+                    <p class="relatorio-subtitle">Produtos com estoque disponível, priorizando os que nunca venderam ou venderam há mais tempo.</p>
+                    <div class="relatorio-table-wrap">
+                        <table class="relatorio-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Categoria / Tamanho</th>
+                                    <th>Disponível</th>
+                                    <th>Valor parado</th>
+                                    <th>Última venda</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="relatorio-parados-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <div style="text-align: center; margin-top: 40px;">
                 <button id="logout-btn" style="background: #e74c3c; width: auto; padding: 10px 30px; color: white; border-radius: 30px; border:none; cursor:pointer; font-weight:600;">Sair do Sistema</button>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260505005633"></script>
     <script>
         // Lógica simples para trocar as abas do admin sem sair da página
         function mudarAbaAdmin(aba) {
@@ -173,6 +326,7 @@
             // Força a recarga dos dados se clicar nas abas novas (as funções vieram do script.js)
             if(aba === 'pedidos' && typeof carregarPedidosAdmin === 'function') carregarPedidosAdmin();
             if(aba === 'clientes' && typeof carregarClientesAdmin === 'function') carregarClientesAdmin();
+            if(aba === 'relatorios' && typeof carregarRelatoriosAdmin === 'function') carregarRelatoriosAdmin();
         }
     </script>
 </body>

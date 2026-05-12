@@ -219,7 +219,6 @@ header nav a.active {
     padding: 6rem 0;
     text-align: center;
     /* Adicionada textura sutil de linho */
-    background-image: url('https://www.transparenttextures.com/patterns/linen.png'); 
 }
 
 .sobre-texto {
@@ -348,7 +347,6 @@ header nav a.active {
     color: white;
     position: relative;
     /* Adicionada textura de padrão de malha de crochê sutil */
-    background-image: url('https://www.transparenttextures.com/patterns/knitted-net.png'); 
 }
 
 .revendedor-box {
@@ -820,3 +818,970 @@ footer {
 .btn-modal-cancel:hover { 
     background-color: #E0E0E0; 
 }
+
+/* === WCODE: LIMPEZA PERFORMANCE INDEX === */
+.produtos-section,
+.revendedores,
+.confianca,
+footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 700px;
+}
+
+
+/* === WCODE: ESTOQUE PESO VOLUME === */
+.cart-item-info button {
+    line-height: 1;
+}
+
+#cart-logistica-resumo {
+    background: #FAFAFA;
+    border: 1px solid #F0F0F0;
+    border-radius: 8px;
+    padding: 8px 10px;
+}
+
+@media (max-width: 600px) {
+    #add-product-form .form-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* === WCODE: ADMIN HEADER COMPACTO === */
+body.admin-page header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+body.admin-page .header-content {
+    padding: 0.45rem 2rem;
+    min-height: 64px;
+}
+
+body.admin-page .header-logo {
+    width: 58px;
+    height: 58px;
+    border-width: 1px;
+    padding: 1px;
+}
+
+body.admin-page header nav {
+    gap: 10px;
+}
+
+body.admin-page header nav a {
+    font-size: 0.9rem;
+}
+
+body.admin-page .admin-voltar-vitrine {
+    background: var(--section-alt-bg);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+body.admin-page .admin-voltar-vitrine::after {
+    display: none !important;
+}
+
+body.admin-page .admin-tabs {
+    margin-bottom: 1.5rem;
+}
+
+body.admin-page .section-title {
+    margin-bottom: 1.5rem;
+}
+
+body.admin-page .section-title h2 {
+    font-size: 2rem;
+}
+
+body.admin-page form[id="add-product-form"],
+body.admin-page form[id="login-form"] {
+    padding: 2rem;
+}
+
+@media (max-width: 768px) {
+    body.admin-page .header-content {
+        flex-direction: row;
+        padding: 0.5rem 1rem;
+    }
+
+    body.admin-page .header-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+    body.admin-page header nav {
+        width: auto;
+    }
+
+    body.admin-page .admin-voltar-vitrine {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+}
+
+
+/* === WCODE: ADMIN SEM HEADER === */
+body.admin-page header {
+    display: none !important;
+}
+
+body.admin-page .admin-floating-back {
+    position: fixed;
+    top: 14px;
+    right: 18px;
+    z-index: 2000;
+    background: #ffffff;
+    color: #333333;
+    text-decoration: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: all .2s ease;
+}
+
+body.admin-page .admin-floating-back:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+}
+
+body.admin-page .admin-main {
+    padding-top: 0.5rem !important;
+}
+
+body.admin-page .admin-tabs {
+    margin-top: 0.5rem !important;
+    margin-bottom: 1.25rem !important;
+}
+
+body.admin-page .section-title {
+    margin-bottom: 1.2rem !important;
+}
+
+body.admin-page .section-title h2 {
+    font-size: 1.9rem;
+}
+
+body.admin-page form[id="add-product-form"],
+body.admin-page form[id="login-form"] {
+    padding: 1.8rem;
+}
+
+@media (max-width: 768px) {
+    body.admin-page .admin-floating-back {
+        top: 10px;
+        right: 10px;
+        font-size: 0.82rem;
+        padding: 8px 12px;
+    }
+
+    body.admin-page .admin-main {
+        padding-top: 0.25rem !important;
+    }
+}
+
+
+/* === WCODE: MODAL DETALHES PEDIDO === */
+.pedido-detalhes-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.62);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.pedido-detalhes-modal {
+    background: #fff;
+    width: min(980px, 96vw);
+    max-height: 92vh;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.pedido-detalhes-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FAFAFA;
+}
+
+.pedido-detalhes-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.pedido-detalhes-fechar {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: #777;
+    padding: 0;
+}
+
+.pedido-detalhes-body {
+    padding: 22px;
+    overflow-y: auto;
+}
+
+.pedido-detalhes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.pedido-detalhes-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fff;
+    margin-bottom: 16px;
+}
+
+.pedido-detalhes-card h4 {
+    margin: 0 0 10px 0;
+    color: var(--primary-color);
+}
+
+.pedido-detalhes-card p {
+    margin: 6px 0;
+    color: var(--text-dark);
+}
+
+.pedido-itens-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+}
+
+.pedido-itens-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.pedido-itens-table td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.pedido-btn-zap {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--whatsapp-green);
+    color: white;
+    text-decoration: none;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+    .pedido-detalhes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pedido-detalhes-overlay {
+        padding: 10px;
+    }
+
+    .pedido-detalhes-body {
+        padding: 14px;
+    }
+}
+
+
+/* === WCODE: ESTOQUE COMPLETO ADMIN === */
+.estoque-resumo-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin: -20px auto 30px auto;
+    max-width: 1050px;
+}
+
+.estoque-card-resumo {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 14px;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.estoque-card-resumo span {
+    display: block;
+    color: #777;
+    font-size: 0.78rem;
+    margin-bottom: 5px;
+}
+
+.estoque-card-resumo strong {
+    color: var(--text-dark);
+    font-size: 1.25rem;
+}
+
+.estoque-card-resumo.destaque {
+    border-color: rgba(37, 211, 102, 0.35);
+    background: #f3fff7;
+}
+
+.estoque-card-resumo.destaque strong {
+    color: var(--whatsapp-green);
+}
+
+.estoque-badge {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.estoque-badge.ok {
+    background: #eafaf0;
+    color: #1f8f4d;
+}
+
+.estoque-badge.baixo {
+    background: #fff4d6;
+    color: #9a6a00;
+}
+
+.estoque-badge.zerado {
+    background: #fde8e8;
+    color: #c0392b;
+}
+
+.btn-admin-mini {
+    border: none;
+    border-radius: 8px;
+    padding: 7px 10px;
+    margin: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.btn-entrada {
+    background: #27ae60;
+}
+
+.btn-saida {
+    background: #f39c12;
+}
+
+.btn-editar {
+    background: #3498db;
+}
+
+.btn-excluir {
+    background: #e74c3c;
+}
+
+@media (max-width: 768px) {
+    .estoque-resumo-admin {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* === WCODE: FORM PRODUTO RETRATIL === */
+.estoque-top-actions {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 1.8rem auto;
+}
+
+.btn-novo-produto {
+    box-shadow: 0 8px 22px rgba(217,119,87,0.25);
+}
+
+.produto-editor-card {
+    max-width: 760px;
+    margin: 0 auto 3rem auto;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.06);
+}
+
+.produto-editor-card .section-title {
+    margin-bottom: 1.2rem !important;
+}
+
+.produto-editor-card .section-title h2 {
+    font-size: 1.8rem;
+}
+
+.produto-editor-card form[id="add-product-form"] {
+    box-shadow: none;
+    padding: 0;
+    max-width: 100%;
+}
+
+.produto-editor-hidden {
+    display: none !important;
+}
+
+body.admin-page #tab-produtos > .section-title {
+    margin-bottom: 1.5rem !important;
+}
+
+@media (max-width: 700px) {
+    .produto-editor-card {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .btn-novo-produto {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* === WCODE: FILTROS ADMIN === */
+.admin-filtro-box {
+    max-width: 1050px;
+    margin: -0.6rem auto 1.5rem auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.admin-filtro-input {
+    flex: 1;
+    min-width: 260px;
+    background: #ffffff;
+    border: 1px solid #e7e7e7;
+    border-radius: 999px;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.04);
+}
+
+.admin-filtro-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 24px rgba(217,119,87,0.12);
+}
+
+.admin-filtro-contador {
+    color: #777;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.admin-filtro-sem-resultado {
+    background: #FAFAFA;
+}
+
+@media (max-width: 700px) {
+    .admin-filtro-box {
+        margin-top: 0;
+    }
+
+    .admin-filtro-input {
+        min-width: 100%;
+    }
+
+    .admin-filtro-contador {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* === WCODE: RELATORIOS ADMIN === */
+.relatorios-actions {
+    max-width: 1050px;
+    margin: -1rem auto 1.5rem auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.relatorios-resumo {
+    max-width: 1050px;
+    margin: 0 auto 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.relatorio-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.relatorio-card span {
+    display: block;
+    font-size: 0.78rem;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.relatorio-card strong {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+}
+
+.relatorio-card.destaque {
+    background: #f3fff7;
+    border-color: rgba(37, 211, 102, 0.35);
+}
+
+.relatorio-card.destaque strong {
+    color: var(--whatsapp-green);
+}
+
+.relatorio-bloco {
+    max-width: 1050px;
+    margin: 0 auto 2rem auto;
+    background: white;
+    border-radius: 16px;
+    padding: 1.3rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.relatorio-bloco h3 {
+    margin: 0 0 4px 0;
+    color: var(--primary-color);
+}
+
+.relatorio-subtitle {
+    margin: 0 0 1rem 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.relatorio-table-wrap {
+    overflow-x: auto;
+}
+
+.relatorio-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+.relatorio-table th {
+    background: var(--primary-color);
+    color: white;
+    text-align: left;
+    padding: 12px;
+}
+
+.relatorio-table td {
+    border-bottom: 1px solid #eee;
+    padding: 12px;
+    vertical-align: top;
+}
+
+.relatorio-status {
+    display: inline-block;
+    background: #eafaf0;
+    color: #1f8f4d;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.relatorio-status.alerta {
+    background: #fde8e8;
+    color: #c0392b;
+}
+
+.relatorio-loading {
+    grid-column: 1 / -1;
+    background: white;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    color: #777;
+}
+
+.relatorio-loading.erro {
+    color: #e74c3c;
+}
+
+@media (max-width: 700px) {
+    .relatorios-actions {
+        justify-content: center;
+    }
+
+    .relatorios-actions .btn-primary {
+        width: 100%;
+    }
+}
+
+
+/* === WCODE: HISTORICO ESTOQUE === */
+.btn-historico {
+    background: #6c5ce7;
+}
+
+.historico-estoque-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.62);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.historico-estoque-modal {
+    background: #fff;
+    width: min(1120px, 96vw);
+    max-height: 92vh;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.historico-estoque-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FAFAFA;
+}
+
+.historico-estoque-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.historico-estoque-fechar {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: #777;
+    padding: 0;
+}
+
+.historico-estoque-body {
+    padding: 22px;
+    overflow-y: auto;
+}
+
+.historico-produto-resumo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.historico-produto-resumo > div {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 14px;
+    background: #fff;
+}
+
+.historico-produto-resumo span {
+    display: block;
+    font-size: 0.78rem;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.historico-produto-resumo strong {
+    color: var(--text-dark);
+}
+
+.historico-table-wrap {
+    overflow-x: auto;
+}
+
+.historico-estoque-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 980px;
+}
+
+.historico-estoque-table th {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.historico-estoque-table td {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    vertical-align: top;
+    font-size: 0.88rem;
+}
+
+.historico-tipo {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 5px 9px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: #f1f1f1;
+    color: #555;
+    white-space: nowrap;
+}
+
+.historico-tipo.positivo {
+    background: #eafaf0;
+    color: #1f8f4d;
+}
+
+.historico-tipo.negativo {
+    background: #fde8e8;
+    color: #c0392b;
+}
+
+.historico-tipo.ajuste {
+    background: #fff4d6;
+    color: #9a6a00;
+}
+
+@media (max-width: 700px) {
+    .historico-estoque-overlay {
+        padding: 10px;
+    }
+
+    .historico-estoque-body {
+        padding: 14px;
+    }
+}
+
+
+/* === WCODE: HOME FOCO REVENDEDORES === */
+.hero-revenda {
+    min-height: 68vh;
+    height: auto;
+    padding: 5rem 0;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    backdrop-filter: blur(4px);
+}
+
+.hero-subtitle {
+    max-width: 720px;
+    margin: -1.4rem auto 2.4rem auto;
+    color: rgba(255,255,255,0.92);
+    font-size: 1.12rem;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.beneficios-revenda,
+.como-revender,
+.publico-revenda {
+    padding: 5.5rem 0;
+}
+
+.beneficios-revenda {
+    background: white;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.beneficio-card {
+    background: var(--bg-color);
+    border: 1px solid #eee;
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.04);
+}
+
+.beneficio-card span {
+    font-size: 2rem;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.beneficio-card h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+}
+
+.beneficio-card p {
+    color: var(--text-light);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.como-revender {
+    background: var(--section-alt-bg);
+}
+
+.passos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.passo-card {
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.passo-card strong {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.passo-card h3 {
+    margin: 0 0 10px 0;
+}
+
+.passo-card p {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.publico-revenda {
+    background: white;
+}
+
+.publico-box {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 24px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(217,119,87,0.18);
+}
+
+.publico-box h2 {
+    margin: 0 0 1rem 0;
+    font-size: 2.2rem;
+    line-height: 1.2;
+}
+
+.publico-box p {
+    margin: 0;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.8;
+}
+
+.publico-lista {
+    background: rgba(255,255,255,0.13);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 22px;
+}
+
+.publico-lista p {
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.section-eyebrow {
+    display: inline-block;
+    color: rgba(255,255,255,0.82);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .78rem;
+    margin-bottom: 10px;
+}
+
+.sobre-revenda {
+    margin-top: 0;
+}
+
+#form-revendedor select {
+    background-color: #FAFAFA;
+}
+
+.cart-header h2 {
+    color: var(--text-dark);
+}
+
+@media (max-width: 900px) {
+    .publico-box {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+
+    .publico-box h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-revenda {
+        padding: 3.5rem 0;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: -1rem;
+    }
+
+    .beneficios-revenda,
+    .como-revender,
+    .publico-revenda {
+        padding: 4rem 0;
+    }
+}
+/* === FIM WCODE: HOME FOCO REVENDEDORES === */

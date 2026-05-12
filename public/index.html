@@ -3,59 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balmantex - Indústria Textil e Crochê</title>
+    <title>Balmantex - Fábrica de Tapetes para Revenda</title>
+    <meta name="description" content="Compre tapetes direto da fábrica para revender. A Balmantex fabrica tapetes em tear jacquard para lojistas, sacoleiras, representantes e vendedores em todo o Brasil.">
     <link rel="icon" type="image/png" href="balmantex-logo.png">
+    <link rel="preload" as="image" href="fundo-hero.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <link rel="stylesheet" href="style.css?v=20260505131033">
 </head>
 <body>
     <header>
         <div class="header-content">
             <div class="logo-container">
-                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="header-logo">
+                <img loading="eager" decoding="async" src="balmantex-logo.png" alt="Balmantex Logotipo" class="header-logo">
                 <span class="sr-only">Balmantex</span>
             </div>
             <nav>
                 <a href="#inicio" class="active">Início</a>
-                <a href="#sobre">Quem Somos</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#revendedores">Seja Revendedor</a>
-                <a href="#" id="cart-icon" style="font-size: 1.2rem;">🛒 <span id="cart-count" class="cart-badge">0</span></a>
-                <a href="login-cliente.html" id="link-login-menu" style="font-weight: 600; color: var(--primary-color);">Entrar / Cadastrar</a>
+                <a href="#beneficios-revenda">Vantagens</a>
+                <a href="#como-revender">Como Revender</a>
+                <a href="#produtos">Tapetes</a>
+                <a href="#revendedores">Contato</a>
+                <a href="#" id="cart-icon" style="font-size: 1.2rem;">📦 <span id="cart-count" class="cart-badge">0</span></a>
+                <a href="login-cliente.html" id="link-login-menu" style="font-weight: 600; color: var(--primary-color);">Entrar</a>
                 <a href="admin.html" class="btn-admin-link">Admin</a>
             </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero hero-revenda">
         <div class="hero-content">
-            <h2>Crochê direto da fábrica para todo o Brasil</h2>
+            <span class="hero-tag">Fábrica de tapetes para revenda</span>
+            <h2>Compre tapetes direto da fábrica para revender</h2>
+            <p class="hero-subtitle">
+                A Balmantex fabrica tapetes em tear jacquard e atende quem compra para revender: lojistas, sacoleiras, representantes comerciais e vendedores online.
+            </p>
             <div class="hero-buttons">
-                <a href="#produtos" class="btn-primary">Ver Produtos</a>
-                <a href="#revendedores" class="btn-secondary">Seja Revendedor</a>
+                <a href="#revendedores" class="btn-primary">Quero comprar para revender</a>
+                <a href="#produtos" class="btn-secondary">Ver tapetes disponíveis</a>
             </div>
         </div>
     </section>
 
-    <section id="sobre" class="sobre">
+    <section id="beneficios-revenda" class="beneficios-revenda">
         <div class="container">
             <div class="section-title">
-                <h2>Quem Somos</h2>
+                <h2>Por que comprar da Balmantex para revender?</h2>
                 <div class="divider"></div>
+                <p>Comprar direto da fábrica ajuda o revendedor a ter variedade, reposição e atendimento próximo para montar seus pedidos com mais segurança.</p>
             </div>
-            <p class="sobre-texto">
-                Fábrica localizada em Barbosa Ferraz com produção própria de peças em crochê, atendendo clientes de diversas regiões do Brasil. Levamos qualidade, tradição e exclusividade em cada ponto.
-            </p>
+
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <span>🏭</span>
+                    <h3>Compra direto da fábrica</h3>
+                    <p>Você negocia diretamente com a fábrica, facilitando catálogo, disponibilidade, reposição e montagem do pedido.</p>
+                </div>
+                <div class="beneficio-card">
+                    <span>🧶</span>
+                    <h3>Tapetes de fabricação própria</h3>
+                    <p>Produtos fabricados em tear jacquard, com linhas para cozinha, banheiro, decoração e uso doméstico.</p>
+                </div>
+                <div class="beneficio-card">
+                    <span>📲</span>
+                    <h3>Pedido orientado pelo WhatsApp</h3>
+                    <p>O revendedor recebe atendimento para consultar modelos, quantidades, disponibilidade, envio e condições de compra.</p>
+                </div>
+                <div class="beneficio-card">
+                    <span>🚚</span>
+                    <h3>Envio conforme o pedido</h3>
+                    <p>A fábrica combina a melhor opção de envio de acordo com cidade, volume, peso e quantidade solicitada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-revender" class="como-revender">
+        <div class="container">
+            <div class="section-title">
+                <h2>Como comprar tapetes para revenda</h2>
+                <div class="divider"></div>
+                <p>Um processo simples para o revendedor conhecer os modelos, montar o pedido e receber atendimento da fábrica.</p>
+            </div>
+
+            <div class="passos-grid">
+                <div class="passo-card">
+                    <strong>1</strong>
+                    <h3>Solicite o catálogo</h3>
+                    <p>Envie seus dados, cidade e perfil de venda para receber as opções disponíveis.</p>
+                </div>
+                <div class="passo-card">
+                    <strong>2</strong>
+                    <h3>Consulte modelos e condições</h3>
+                    <p>A equipe informa modelos, valores, disponibilidade, quantidades e orientações para compra.</p>
+                </div>
+                <div class="passo-card">
+                    <strong>3</strong>
+                    <h3>Monte seu pedido de revenda</h3>
+                    <p>Você escolhe os tapetes, informa as quantidades e a fábrica confirma o pedido pelo WhatsApp.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="produtos" class="produtos-section">
         <div class="container">
             <div class="section-title">
-                <h2>Nossos Produtos</h2>
+                <h2>Catálogo de tapetes para revenda</h2>
                 <div class="divider"></div>
-                <p>Escolha a categoria e encante-se com nossas peças.</p>
+                <p>Veja alguns modelos disponíveis para quem deseja comprar da fábrica e revender.</p>
             </div>
             
             <div class="filtros-categoria">
@@ -66,8 +121,27 @@
                 <button class="btn-filtro" data-cat="personalizada">Peças Personalizadas</button>
             </div>
 
-            <div id="vitrine" class="grid-container">
+            <div id="vitrine" class="grid-container"></div>
+        </div>
+    </section>
+
+    <section id="publico-revenda" class="publico-revenda">
+        <div class="container">
+            <div class="publico-box">
+                <div>
+                    <h2>Fornecimento para quem vende no varejo, porta a porta ou online</h2>
+                    <p>
+                        A Balmantex fornece tapetes para quem deseja comprar em quantidade e revender em lojas, redes sociais, WhatsApp, grupos locais ou atendimento porta a porta.
+                    </p>
                 </div>
+                <div class="publico-lista">
+                    <p>✓ Lojas de cama, mesa e banho</p>
+                    <p>✓ Lojas de utilidades e decoração</p>
+                    <p>✓ Sacoleiras e revendedoras autônomas</p>
+                    <p>✓ Representantes comerciais</p>
+                    <p>✓ Vendas por WhatsApp, Instagram e grupos locais</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -75,46 +149,56 @@
         <div class="container">
             <div class="revendedor-box">
                 <div class="revendedor-texto">
-                    <h2>Seja um parceiro revendedor</h2>
-                    <p>Aumente sua renda vendendo produtos direto da fábrica com alta margem de lucro. Preencha os dados e entraremos em contato!</p>
+                    <span class="section-eyebrow">Revenda Balmantex</span>
+                    <h2>Quer comprar tapetes da fábrica para revender?</h2>
+                    <p>
+                        Preencha seus dados e fale com a fábrica pelo WhatsApp. Nossa equipe envia o catálogo, verifica sua cidade e orienta sobre modelos, quantidades, disponibilidade e envio.
+                    </p>
                 </div>
+
                 <form id="form-revendedor" class="form-contato">
-                    <input type="text" id="rev-nome" placeholder="Seu Nome Completo" required>
-                    <input type="text" id="rev-cidade" placeholder="Sua Cidade e Estado" required>
-                    <input type="tel" id="rev-telefone" placeholder="Seu Telefone / WhatsApp" required>
-                    <button type="submit" class="btn-primary" style="box-shadow: none;">Quero ser Revendedor</button>
+                    <input type="text" id="rev-nome" placeholder="Seu nome completo" required>
+                    <input type="text" id="rev-cidade" placeholder="Cidade e Estado" required>
+                    <input type="tel" id="rev-telefone" placeholder="Telefone / WhatsApp" required>
+
+                    <select id="rev-experiencia">
+                        <option value="">Você já revende produtos?</option>
+                        <option value="Sim, já revendo">Sim, já revendo</option>
+                        <option value="Ainda não, quero começar">Ainda não, quero começar</option>
+                        <option value="Tenho loja física">Tenho loja física</option>
+                        <option value="Vendo pelo WhatsApp/Instagram">Vendo pelo WhatsApp/Instagram</option>
+                    </select>
+
+                    <select id="rev-interesse">
+                        <option value="">Principal interesse</option>
+                        <option value="Catálogo para revenda">Catálogo para revenda</option>
+                        <option value="Pedido em atacado">Pedido em atacado</option>
+                        <option value="Peças personalizadas">Peças personalizadas</option>
+                        <option value="Representação comercial">Representação comercial</option>
+                    </select>
+
+                    <button type="submit" class="btn-primary" style="box-shadow: none;">Solicitar catálogo para revenda</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <section id="confianca" class="confianca">
+    <section id="sobre" class="sobre sobre-revenda">
         <div class="container">
             <div class="section-title">
-                <h2>Nossa Estrutura e Entregas</h2>
+                <h2>Fábrica de tapetes em tear jacquard</h2>
                 <div class="divider"></div>
             </div>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&q=80&w=400" alt="Nossa Produção">
-                    <p>Produção Própria</p>
-                </div>
-                <div class="galeria-item">
-                    <img src="https://images.unsplash.com/photo-1560209617-059c0b2daaf5?auto=format&fit=crop&q=80&w=400" alt="Clientes Satisfeitos">
-                    <p>Clientes Satisfeitos</p>
-                </div>
-                <div class="galeria-item">
-                    <img src="https://images.unsplash.com/photo-1580674684081-7767331afc52?auto=format&fit=crop&q=80&w=400" alt="Entregas">
-                    <p>Entregas para todo Brasil</p>
-                </div>
-            </div>
+            <p class="sobre-texto">
+                A Balmantex é uma fábrica localizada em Barbosa Ferraz, Paraná, especializada na produção de tapetes em tear jacquard. Nosso foco é atender revendedores que buscam produtos para revenda com variedade, reposição e atendimento direto da fábrica.
+            </p>
         </div>
     </section>
 
     <footer id="localizacao">
         <div class="footer-content container">
             <div class="footer-info">
-                <img src="balmantex-logo.png" alt="Balmantex Logotipo" class="footer-logo">
+                <img loading="eager" decoding="async" src="balmantex-logo.png" alt="Balmantex Logotipo" class="footer-logo">
                 <span class="sr-only">Balmantex</span>
                 <p>📍 RUA 26 DE AGOSTO 147, Barbosa Ferraz, Paraná, Brasil</p>
                 <a href="https://wa.me/5544999345231" target="_blank" class="footer-zap">
@@ -125,24 +209,25 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5544999345231" target="_blank" class="whatsapp-flutuante" aria-label="Pedido Rápido WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone WhatsApp">
+    <a href="https://wa.me/5544999345231" target="_blank" class="whatsapp-flutuante" aria-label="Falar com a Balmantex no WhatsApp">
+        <img loading="lazy" decoding="async" src="/whatsapp-icon.svg" alt="Ícone WhatsApp">
     </a>
 
     <div id="cart-overlay" class="cart-overlay"></div>
     <div id="cart-sidebar" class="cart-sidebar">
         <div class="cart-header">
-            <h2>Seu Carrinho</h2>
+            <h2>Pedido para Revenda</h2>
             <button id="close-cart" class="close-cart">&times;</button>
         </div>
-        <div id="cart-items" class="cart-items">
-            </div>
+
+        <div id="cart-items" class="cart-items"></div>
+
         <div class="cart-footer">
-            
             <div class="cart-total" style="font-size: 1rem; color: #7A7A7A; margin-bottom: 10px;">
                 <span>Subtotal:</span>
                 <span id="cart-subtotal-price">R$ 0,00</span>
             </div>
+
             <div style="margin-bottom: 20px;">
                 <div style="display: flex; gap: 5px;">
                     <input type="text" id="cep-frete" placeholder="Digite o CEP" style="flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #ddd; font-family: 'Poppins', sans-serif;">
@@ -150,15 +235,17 @@
                 </div>
                 <p id="msg-frete" style="font-size: 0.85rem; color: var(--primary-color); margin-top: 8px; font-weight: 600;"></p>
             </div>
+
             <div class="cart-total">
-                <span>Total Final:</span>
+                <span>Total estimado:</span>
                 <span id="cart-total-price">R$ 0,00</span>
             </div>
-            <button id="btn-iniciar-pagamento" class="btn-primary" style="width: 100%; text-align: center; box-shadow: none;">Ir para Pagamento</button>
+
+            <button id="btn-iniciar-pagamento" class="btn-primary" style="width: 100%; text-align: center; box-shadow: none;">Enviar pedido de revenda</button>
             <div id="paymentBrick_container" style="margin-top: 15px; display: none;"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script defer src="script.js?v=20260505131033"></script>
 </body>
 </html>

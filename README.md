@@ -49,18 +49,23 @@ A aplicação é construída com Express 5 servindo páginas HTML estáticas e u
 
 ---
 
-## Screenshots Planejados
+## Screenshots
 
-> As capturas de tela serão adicionadas após aprovação do portfólio.
+As imagens abaixo apresentam algumas telas do projeto em uso, com dados sensíveis removidos ou ocultados para fins de portfólio.
 
-```
-docs/screenshots/home.png
-docs/screenshots/catalogo.png
-docs/screenshots/produto.png
-docs/screenshots/admin.png
-docs/screenshots/whatsapp.png
-```
+### Home
 
+<img src="docs/screenshots/home.png" alt="Home" width="900">
+
+### Catálogo
+
+<img src="docs/screenshots/catalogo.png" alt="Catálogo" width="900">
+
+### Produtos
+
+<img src="docs/screenshots/produtos.png" alt="Produtos" width="900">
+
+---
 ---
 
 ## Estrutura do Projeto
